@@ -11,6 +11,11 @@ function getCurrentDate(){
 
 function getCurrentTime(){
     const date = new Date();
+    if (date.getMinutes() < 10) {
+        return date.getHours() + ":0" + date.getMinutes() + ":" + date.getSeconds();
+    } if (date.getSeconds() < 10) {
+        return date.getHours() + ":" + date.getMinutes() + ":0" + date.getSeconds();        
+    }
     return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 }
 
@@ -24,16 +29,23 @@ function americanDateFormat(){
     return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 }
 
-if (navigator.language == "en-US"){
-    
+if (navigator.language == "en-US") {
     dateHome.textContent = americanDateFormat();
-    clockHome.textContent = getCurrentTime();
     weekDay.textContent = getCurrentDay();
-    
-} else {
-    dateHome.textContent = getCurrentDate();
-    clockHome.textContent = getCurrentTime();
-    weekDay.textContent = getCurrentDay();
+
+}else{
+
+dateHome.textContent = getCurrentDate();
+weekDay.textContent = getCurrentDay();
+
 }
 
-    
+function updateClock(){
+    clockHome.textContent = getCurrentTime();
+
+}
+
+setInterval(updateClock, 1000);
+
+
+
