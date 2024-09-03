@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" type = "text/css" href = "css/home_page.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/dialog.css">
     
     <title>Document</title>
 </head>
@@ -14,18 +15,27 @@
         <p id ="date-home" >time</p>
         <p id = "clock-day"></p>
         
-       
-
-
+      
     </div>
 
  <button id="home-page-button">bater ponto</button>
 
-<dialog>    </dialog>
+ <dialog id="dialog-point" >
+     <p>data</p>
+        <p>hora</p>
+        <button>entrada</button>  
+        <button>saida</button>
+        <button>pausa</button>
+        <button>volta pausa</button>
+        <button id="close-dialog-button">X</button>
+</dialog>
+
+
 
 
 <script src="js/clock.js"></script>
 <script src="js/button.js"></script>
+<script src ="js/dialog.js"></script>
 
     <!-- TO DO: register history -->
     <!-- TO DO: alert footer -->
