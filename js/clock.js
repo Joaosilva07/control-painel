@@ -29,23 +29,20 @@ function americanDateFormat(){
     return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 }
 
-if (navigator.language == "en-US") {
-    dateHome.textContent = americanDateFormat();
-    weekDay.textContent = getCurrentDay();
-
-}else{
-
-dateHome.textContent = getCurrentDate();
-weekDay.textContent = getCurrentDay();
-
-}
-
 function updateClock(){
+    if (navigator.language == "en-US") {
+        dateHome.textContent = americanDateFormat();
+        weekDay.textContent = getCurrentDay();
+    } else {
+        dateHome.textContent = getCurrentDate();
+        weekDay.textContent = getCurrentDay();
+    }
     clockHome.textContent = getCurrentTime();
-
 }
 
 setInterval(updateClock, 1000);
+
+
 
 
 

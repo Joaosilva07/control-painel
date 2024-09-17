@@ -1,6 +1,12 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
+
 #clock-home {
-    font-size: 1.5em;
-    text-align: center;
-    margin-top: 10px;
-    
+    font-size: 2em; 
 }

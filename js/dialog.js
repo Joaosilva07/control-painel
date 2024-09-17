@@ -21,5 +21,5 @@ function updateDialogClock(){
 setInterval(updateDialogClock, 1000);
 
 
-function registerPonto(){}
+
 
