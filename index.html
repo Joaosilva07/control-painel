@@ -22,16 +22,19 @@
 
  <dialog id="dialog-point" >
 
-     <p id="dialog-date">data</p>
-     
-        <p id="dialog-clock">hora</p>
-        <button>entrada</button>  
-        <button>saida</button>
-        <button>pausa</button>
-        <button>volta pausa</button>
-        <button id="close-dialog-button">X</button>
+    <p id="dialog-date">data</p>
+    
+    <p id="dialog-clock">hora</p>
+    
+    <select id="action-select">
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+        <option value="pausa">Intervalo</option>
+        <option value="volta_pausa">Volta Intervalo</option>
+    </select>
+    <button id="dialog-register-button">Registrar ponto</button>
+    <button id="close-dialog-button">X</button>
 </dialog>
-
 
 
 
