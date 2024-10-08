@@ -79,6 +79,25 @@ function formatRegisterType(type) {
     return words.join(' ');
 }
 
+function editRegister(index, tipoElement, dateElement) {
+    var registers = getRegisterLocalStorage();
+    var register = registers[index];
+
+    var newTipo = prompt("Enter a new tipo:", register.tipo);
+    if (newTipo) {
+        register.tipo = newTipo;
+        tipoElement.textContent = newTipo;
+    }
+
+    var newDate = prompt("Enter a new date:", register.data);
+    if (newDate) {
+        register.data = newDate;
+        dateElement.textContent = newDate;
+    }
+
+    registers[index] = register;
+    localStorage.setItem("register", JSON.stringify(registers));
+}
 function displayHistory() {
     var registers = getRegisterLocalStorage();
     var historyElement = document.getElementById('register-history');
@@ -89,23 +108,29 @@ function displayHistory() {
     registers.reverse();
 
     for (var i = 0; i < registers.length; i++) {
-        var historyItem = document.createElement('p');
+        var historyItem = document.createElement('div');
         
-        var tipo = formatRegisterType(registers[i].tipo === registers.tipo ? localStorage.getItem("lastTypeRegister") : registers[i].tipo);
-        var time = registers[i].hora;
-        var date = registers[i].data;
-        historyItem.textContent = `${tipo} às ${time} no dia ${date}`;
+        var tipo = document.createElement('span');
+        tipo.textContent = formatRegisterType(registers[i].tipo === registers.tipo ? localStorage.getItem("lastTypeRegister") : registers[i].tipo);
+        var time = document.createElement('span');
+        time.textContent = registers[i].hora;
+        var date = document.createElement('span');
+        date.textContent = registers[i].data;
+        var text = document.createElement('p'); 
+        text.textContent = `${tipo.textContent} às ${time.textContent} no dia ${date.textContent}`;
         
-
-        historyItem.addEventListener('click', function() {
-            
-            
+       
+        var editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', function() {
+            editRegister(i, tipo, date); 
         });
-        
+
+        historyItem.appendChild(text);
+        historyItem.appendChild(editButton);
         historyElement.appendChild(historyItem);
     }
 }
-
 document.getElementById('home-page-button').addEventListener('click', displayHistory);
 
 displayHistory();
