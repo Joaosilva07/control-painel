@@ -30,6 +30,7 @@ btnDialogBaterPonto.addEventListener("click", async () => {
     console.log(ponto);
 
     saveRegisterLocalStorage(ponto);
+    displayHistory();
 
     localStorage.setItem("lastTypeRegister", typeRegister);
 
@@ -64,3 +65,47 @@ function getRegisterLocalStorage() {
 
     return JSON.parse(registers);
 }
+
+function formatRegisterType(type) {
+    
+    let words = type.replace('_', ' ').split(' ');
+
+    
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+
+    
+    return words.join(' ');
+}
+
+function displayHistory() {
+    var registers = getRegisterLocalStorage();
+    var historyElement = document.getElementById('register-history');
+
+    while (historyElement.firstChild) {
+        historyElement.removeChild(historyElement.firstChild);
+    }
+    registers.reverse();
+
+    for (var i = 0; i < registers.length; i++) {
+        var historyItem = document.createElement('p');
+        
+        var tipo = formatRegisterType(registers[i].tipo === registers.tipo ? localStorage.getItem("lastTypeRegister") : registers[i].tipo);
+        var time = registers[i].hora;
+        var date = registers[i].data;
+        historyItem.textContent = `${tipo} às ${time} no dia ${date}`;
+        
+
+        historyItem.addEventListener('click', function() {
+            
+            
+        });
+        
+        historyElement.appendChild(historyItem);
+    }
+}
+
+document.getElementById('home-page-button').addEventListener('click', displayHistory);
+
+displayHistory();

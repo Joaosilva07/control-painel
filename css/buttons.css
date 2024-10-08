@@ -14,3 +14,8 @@
 #home-page-button:hover {
     background-color: #0056b3;
 }
+
+.edit-button {
+    font-size: 0.8em; 
+    margin-left: 10px; 
+}
