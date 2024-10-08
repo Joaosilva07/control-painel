@@ -18,7 +18,7 @@ function getCurrentTime(){
     }
     return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 }
-
+    
 function getCurrentDay(){
     const date = new Date();
     return daysOfWeek[date.getDay()];
