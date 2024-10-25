@@ -4,45 +4,24 @@ const clockHome = document.getElementById('clock-day');
 
 const daysOfWeek = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"];
 
-function getCurrentDate(){
+function getCurrentDate() {
     const date = new Date();
-    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
 }
 
-function getCurrentTime(){
+function getCurrentTime() {
     const date = new Date();
-    if (date.getMinutes() < 10) {
-        return date.getHours() + ":0" + date.getMinutes() + ":" + date.getSeconds();
-    } if (date.getSeconds() < 10) {
-        return date.getHours() + ":" + date.getMinutes() + ":0" + date.getSeconds();        
-    }
-    return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-}
-    
-function getCurrentDay(){
-    const date = new Date();
-    return daysOfWeek[date.getDay()];
+    return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
 }
 
-function americanDateFormat(){
-    const date = new Date();
-    return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+function getCurrentDay() {
+    return daysOfWeek[new Date().getDay()];
 }
 
-function updateClock(){
-    if (navigator.language == "en-US") {
-        dateHome.textContent = americanDateFormat();
-        weekDay.textContent = getCurrentDay();
-    } else {
-        dateHome.textContent = getCurrentDate();
-        weekDay.textContent = getCurrentDay();
-    }
+function updateClock() {
+    dateHome.textContent = getCurrentDate();
+    weekDay.textContent = getCurrentDay();
     clockHome.textContent = getCurrentTime();
 }
 
 setInterval(updateClock, 1000);
-
-
-
-
-

@@ -3,61 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" type = "text/css" href = "css/home_page.css">
-    <link rel = "stylesheet" type = "text/css" href = "css/dialog.css">
-    
-    <title>Document</title>
+    <link rel="stylesheet" href="css/home_page.css">
+    <link rel="stylesheet" href="css/dialog.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <title>Controle de Ponto</title>
 </head>
-<body> 
-   
-
-    <div id ="clock-home">
-        <p id ="day-week">day</p>
-        <p id ="date-home" >time</p>
-        <p id = "clock-day"></p>
-        <button id="home-page-button">bater ponto</button>
-      
-    </div>
-
-        <div id="alert" class="alert">
-                Ponto batido com sucesso!
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Usuários</h2>
+            <input type="text" id="search-user" placeholder="Pesquisar usuário">
+            <h3>Filtrar Registros</h3>
+            <button id="filter-week">Última Semana</button>
+            <button id="filter-month">Último Mês</button>
+            <button id="filter-today">Hoje</button>
+            <button id="filter-custom">Personalizado</button>
+            <div id="custom-filter-container" class="hidden">
+                <label for="filter-start-date">De:</label>
+                <input type="date" id="filter-start-date">
+                <label for="filter-end-date">Até:</label>
+                <input type="date" id="filter-end-date">
+                <button id="apply-custom-filter">Aplicar Filtro</button>
             </div>
-
-
-
- <dialog id="dialog-point">
-
+            <button id="remove-filters">Remover Filtros</button>
+        </aside>
+        <main class="main-content">
+            <div id="clock-home">
+                <p id="day-week">day</p>
+                <p id="date-home">time</p>
+                <p id="clock-day"></p>
+            </div>
+            <button id="home-page-button">Bater Ponto</button>
+            <div id="alert" class="alert">Ponto batido com sucesso!</div>
+            <div id="last-entries-container">
+                <h2>Últimas Entradas</h2>
+                <div id="last-entries"></div>
+                <a href="historico.html" class="view-full-history">Ver Histórico Completo</a>
+            </div>
+        </main>
+    </div>
+    
+    <dialog id="dialog-point">
+        <h2>Registrar Ponto</h2>
         <p id="dialog-date">data</p>
         <p id="dialog-clock">hora</p>
-        <p>Historico de Registros</p>
-        <p id="register-history"></p> 
+        <input type="date" id="register-date">
         <select id="tipos-ponto">
             <option value="entrada">Entrada</option>
             <option value="saida">Saída</option>
             <option value="pausa">Pausa</option>
             <option value="volta_pausa">Volta Pausa</option>
-
-            
-
+            <option value="ausencia">Ausência</option>
         </select>
+        <textarea id="comentario" placeholder="Adicione um comentário"></textarea>
+        <input type="file" id="upload-arquivo">
         <button id="btn-dialog-bater-ponto">Bater Ponto</button>
         <button id="close-dialog-button">X</button>
-        
-</dialog>
-
-
-
-<script src="js/clock.js"></script>
-<script src ="js/dialog.js"></script>
-<script src="js/button.js"></script>
-<script src="js/register.js"></script>
-
-
-
+    </dialog>
     
-
-    <!-- TO DO: alert footer -->
-    
-    
+    <script src="js/clock.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/button.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>
