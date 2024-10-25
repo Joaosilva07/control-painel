@@ -24,7 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         saveRegisterLocalStorage(ponto);
         displayHistory();
-        document.getElementById('dialog-point').close(); // Fecha o diálogo após o registro
+
+        // Exibe o alerta de sucesso
+        const alertElement = document.getElementById('alert');
+        alertElement.classList.add('show');
+        setTimeout(() => {
+            alertElement.classList.remove('show');
+        }, 3000);
+
+        // Fecha o diálogo após o registro
+        document.getElementById('dialog-point').close();
     });
 });
 
@@ -39,9 +48,9 @@ function getRegisterLocalStorage() {
 }
 
 function saveRegisterLocalStorage(register) {
-    let registerLocalStorage = getRegisterLocalStorage();
-    registerLocalStorage.push(register);
-    localStorage.setItem("register", JSON.stringify(registerLocalStorage));
+    const registers = getRegisterLocalStorage();
+    registers.push(register);
+    localStorage.setItem("register", JSON.stringify(registers));
 }
 
 function displayHistory() {

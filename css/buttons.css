@@ -8,11 +8,15 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 #home-page-button:hover {
     background-color: #cc0000;
+}
+
+#home-page-button:active {
+    transform: scale(0.95);
 }
 
 .edit-button {
@@ -24,9 +28,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .edit-button:hover {
     background-color: #cc0000;
+}
+
+.edit-button:active {
+    transform: scale(0.95);
 }
