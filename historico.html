@@ -11,13 +11,47 @@
         <h1>Histórico Completo de Pontos</h1>
         <a href="index.html" class="view-full-history">Voltar</a>
     </header>
+
+    <div id="filter-container">
+        <label for="filter-period">Filtrar por período:</label>
+        <select id="filter-period">
+            <option value="all">Todos</option>
+            <option value="last-week">Última semana</option>
+            <option value="last-month">Último mês</option>
+        </select>
+    </div>
+
     <div id="register-history-container">
         <div id="register-history"></div>
     </div>
+
+    <!-- Diálogo de edição -->
+    <!-- Diálogo de edição -->
+<dialog id="dialog-edit-point">
+    <form method="dialog">
+        <label for="edit-tipos-ponto">Tipo de Registro:</label>
+        <select id="edit-tipos-ponto">
+            <option value="Entrada">Entrada</option>
+            <option value="Saída">Saída</option>
+            <option value="Ausência">Ausência</option>
+            <option value="Pausa">Pausa</option>
+            <option value="Volta Pausa">Volta da Pausa</option>
+        </select>
+        <label for="edit-register-date">Data:</label>
+        <input type="date" id="edit-register-date" required>
+        <label for="edit-comentario">Comentário:</label>
+        <textarea id="edit-comentario"></textarea>
+        <button id="btn-save-edit" type="button">Salvar Edição</button>
+    </form>
+</dialog>
+
+
+
     <script src="js/register.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             displayHistory();
+            document.getElementById('filter-period').addEventListener('change', filterHistory);
         });
     </script>
 </body>
